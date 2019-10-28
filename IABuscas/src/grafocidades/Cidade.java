@@ -33,11 +33,13 @@ public class Cidade {
     
     private String nome;
     private boolean visitado;
+    private int distanciaObjetivo;
     private final List<Adjacente> adjacentes;
     
-    public Cidade(String nome) {
+    public Cidade(String nome, int distanciaObjetivo) {
         this.nome = nome;
         this.visitado = false;
+        this.distanciaObjetivo = distanciaObjetivo;
         this.adjacentes = new ArrayList<>();
     }
 
@@ -55,6 +57,14 @@ public class Cidade {
 
     public void setVisitado(boolean visitado) {
         this.visitado = visitado;
+    }
+
+    public int getDistanciaObjetivo() {
+        return distanciaObjetivo;
+    }
+
+    public void setDistanciaObjetivo(int distanciaObjetivo) {
+        this.distanciaObjetivo = distanciaObjetivo;
     }
     
     public boolean addCidadeAdjacente(Adjacente adjacente) {

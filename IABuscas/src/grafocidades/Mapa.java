@@ -29,22 +29,22 @@ package grafocidades;
  */
 public class Mapa {
 
-    private final Cidade portoUniao = new Cidade("Porto União");
-    private final Cidade pauloFrontin = new Cidade("Paulo Frontin");
-    private final Cidade canoinhas = new Cidade("Canoinhas");
-    private final Cidade irati = new Cidade("Irati");
-    private final Cidade palmeira = new Cidade("Palmeira");
-    private final Cidade campoLargo = new Cidade("Campo Largo");
-    private final Cidade curitiba = new Cidade("Curitiba");
-    private final Cidade balsaNova = new Cidade("Balsa Nova");
-    private final Cidade araucaria = new Cidade("Araucária");
-    private final Cidade saoJose = new Cidade("São José");
-    private final Cidade contenda = new Cidade("Contenda");
-    private final Cidade mafra = new Cidade("Mafra");
-    private final Cidade tijucas = new Cidade("Tijucas");
-    private final Cidade lapa = new Cidade("Lapa");
-    private final Cidade saoMateus = new Cidade("São Mateus");
-    private final Cidade tresBarras = new Cidade("Três Barras");
+    private final Cidade portoUniao = new Cidade("Porto União", 203);
+    private final Cidade pauloFrontin = new Cidade("Paulo Frontin", 172);
+    private final Cidade canoinhas = new Cidade("Canoinhas", 141);
+    private final Cidade irati = new Cidade("Irati", 139);
+    private final Cidade palmeira = new Cidade("Palmeira", 59);
+    private final Cidade campoLargo = new Cidade("Campo Largo", 27);
+    private final Cidade curitiba = new Cidade("Curitiba", 0);
+    private final Cidade balsaNova = new Cidade("Balsa Nova", 41);
+    private final Cidade araucaria = new Cidade("Araucária", 23);
+    private final Cidade saoJose = new Cidade("São José", 13);
+    private final Cidade contenda = new Cidade("Contenda", 39);
+    private final Cidade mafra = new Cidade("Mafra", 94);
+    private final Cidade tijucas = new Cidade("Tijucas", 56);
+    private final Cidade lapa = new Cidade("Lapa", 74);
+    private final Cidade saoMateus = new Cidade("São Mateus", 123);
+    private final Cidade tresBarras = new Cidade("Três Barras", 131);
 
     public Mapa() {
         portoUniao.addCidadeAdjacente(new Adjacente(pauloFrontin));
