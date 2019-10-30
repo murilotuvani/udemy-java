@@ -20,37 +20,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package estruturas;
+package buscas;
 
+import estruturas.VetorOrdenado;
+import grafocidades.Adjacente;
 import grafocidades.Cidade;
 import grafocidades.Mapa;
-import java.util.ArrayList;
-import java.util.Collections;
-import static java.util.Comparator.comparing;
-import static java.util.Comparator.comparingInt;
-import java.util.function.ToIntFunction;
 
 /**
- * 28/10/2019 00:24:54
+ * 29/10/2019 23:34:34
  *
  * @author murilotuvani
  */
-public class VetorOrdenadoArrayList {
-
+public class Gulosa {
+    
+    private VetorOrdenado fronteira;
+    private Cidade objetivo;
+    private boolean achou;
+    
+    public Gulosa(Cidade objetivo) {
+        this.objetivo = objetivo;
+        achou = false;
+    }
+    
+    public void buscar(Cidade atual) {
+        System.out.println("Atual : " + atual.getNome());
+        
+        if (atual.equals(objetivo)) {
+            achou = true;
+        } else {
+            fronteira = new VetorOrdenado(atual.getAdjacentes().size());
+            for (Adjacente a : atual.getAdjacentes()) {
+                if (!a.getCidade().isVisitado()) {
+                    a.getCidade().setVisitado(true);
+                    fronteira.inserir(a.getCidade());
+                }
+            }
+            fronteira.mostrar();
+            if (fronteira.getPrimeiro() != null) {
+                buscar(fronteira.getPrimeiro());
+            }
+        }
+    }
+    
     public static void main(String args[]) {
         Mapa mapa = new Mapa();
-        ArrayList<Cidade> cidades = new ArrayList<>();
-        cidades.add(mapa.getPortoUniao());
-        cidades.add(mapa.getPauloFrontin());
-        cidades.add(mapa.getBalsaNova());
-        cidades.add(mapa.getPalmeira());
-        
-        System.out.println(cidades);
-        
-        ToIntFunction<Cidade> distancias = c -> c.getDistanciaObjetivo();
-        cidades.sort(comparingInt(distancias));
-
-        System.out.println(cidades);
+        Gulosa g = new Gulosa(mapa.getCuritiba());
+        g.buscar(mapa.getPortoUniao());
     }
-
+    
 }
