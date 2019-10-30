@@ -22,45 +22,45 @@
  */
 package estruturas;
 
+import grafocidades.Adjacente;
 import grafocidades.Cidade;
 
 /**
- * 29/10/2019 23:13:47
+ * 30/10/2019 00:32:15
  *
  * @author murilotuvani
  */
-public class VetorOrdenado {
+public class VetorOrdenadoAdjacente {
 
-    private Cidade[] cidades;
+    private Adjacente[] adjacentes;
     private int numeroElementos = 0;
 
-    public VetorOrdenado(int size) {
-        this.cidades = new Cidade[size];
+    public VetorOrdenadoAdjacente(int size) {
+        this.adjacentes = new Adjacente[size];
         numeroElementos = 0;
     }
 
-    public void inserir(Cidade cidade) {
+    public void inserir(Adjacente adjacente) {
         int posicao;
         for (posicao = 0; posicao < numeroElementos; posicao++) {
-            if (cidades[posicao].getDistanciaObjetivo() > cidade.getDistanciaObjetivo()) {
+            if (adjacentes[posicao].getDistanciaAEstrela() > adjacente.getDistanciaAEstrela()) {
                 break;
             }
         }
 
         for (int k = numeroElementos; k > posicao; k--) {
-            cidades[k] = cidades[k - 1];
+            adjacentes[k] = adjacentes[k - 1];
 
         }
     }
 
     public void mostrar() {
         for (int i = 0; i < numeroElementos; i++) {
-            System.out.println(cidades[i].getNome() + "- " + cidades[i].getDistanciaObjetivo());
+            System.out.println(adjacentes[i].getCidade().getNome() +"- "+adjacentes[i].getDistanciaAEstrela());
         }
     }
 
     public Cidade getPrimeiro() {
-        return cidades[0];
+        return adjacentes[0].getCidade();
     }
-
 }
