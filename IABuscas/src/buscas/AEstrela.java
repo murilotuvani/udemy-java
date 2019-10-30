@@ -53,9 +53,10 @@ public class AEstrela {
 
         Predicate<Adjacente> predicate = (Adjacente t) -> !t.getCidade().isVisitado();
         ToIntFunction<Adjacente> distancias = a -> a.getDistanciaAEstrela();
-        
+
         if (atual.equals(this.objetivo)) {
             achou = true;
+
         } else {
             List<Adjacente> fronteira = new ArrayList<>(atual.getAdjacentes()
                     .stream().filter(predicate)
@@ -64,12 +65,17 @@ public class AEstrela {
             fronteira.forEach(f -> {
                 f.getCidade().setVisitado(true);
             });
-            
+
             System.out.println(fronteira);
-            buscar(fronteira.get(0).getCidade());
+            if (!fronteira.isEmpty()) {
+                Adjacente ajacente = fronteira.get(0);
+                int distancia = ajacente.getDistanciaAEstrela();
+                System.out.println(ajacente + " distancia " + distancia);
+                buscar(fronteira.get(0).getCidade());
+            }
         }
     }
-    
+
     public static void main(String args[]) {
         Mapa mapa = new Mapa();
         AEstrela g = new AEstrela(mapa.getCuritiba());
